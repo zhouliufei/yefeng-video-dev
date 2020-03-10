@@ -1,0 +1,23 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/userLogin/login",
+    "pages/mine/mine",
+    "pages/report/report",
+    "pages/videoinfo/videoinfo",
+    "pages/searchVideo/searchVideo",
+   
+    "pages/userRegist/userRegist",
+    "pages/chooseBgm/chooseBgm"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "夜风短视频",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2", 
+  "sitemapLocation": "sitemap.json",
+  "debug":true
+}
