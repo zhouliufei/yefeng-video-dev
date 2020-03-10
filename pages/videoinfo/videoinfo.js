@@ -256,12 +256,27 @@ Page({
   },
 
   replyFocus: function(e) {
-   
+    var me = this;
+    var fatherCommentId=e.currentTarget.dataset.fathercommentid;
+    var toUserId = e.currentTarget.dataset.touserid;
+    var toNickName = e.currentTarget.dataset.tonickname;
+
+    me.setData({
+      placeholder:"回复 " + toNickName,
+      replyFatherCommentId:fatherCommentId,
+      replyToUserId:toUserId,
+      commentFocus: true
+    })
+
   },
 
   saveComment:function(e) {
     var me = this;
     var content = e.detail.value;
+    //获取评论转发的replyFatherCommentId和replyToUserId
+    var fatherCommentId = e.currentTarget.dataset.replyfathercommentid;
+    var toUserId = e.currentTarget.dataset.replytouserid;
+
     var user = app.getGlobalUserInfo();
     var videoInfo = JSON.stringify(me.data.videoInfo);
     var realUrl = '../videoinfo/videoinfo#videoInfo@' + videoInfo;
@@ -273,7 +288,10 @@ Page({
       var param = {
         fromUserId:user.userId,
         videoId:me.data.videoInfo.id,
-        comment:content
+        comment:content,
+        //评论回复相关字段
+        fatherCommentId: fatherCommentId,
+        toUserId: toUserId
       }
       videoInfoApi.userComment(param).then(res => {
         if(res.data.status == 200) {
